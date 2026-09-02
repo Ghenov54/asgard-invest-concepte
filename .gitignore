@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 Thumbs.db
+verify/
+package.json
+package-lock.json

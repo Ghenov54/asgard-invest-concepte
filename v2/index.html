@@ -61,8 +61,10 @@ main,header,footer{position:relative;z-index:2}
 .rv.in{opacity:1;transform:none}
 .rv-d1{transition-delay:.07s}.rv-d2{transition-delay:.14s}.rv-d3{transition-delay:.21s}
 .rv-d4{transition-delay:.28s}.rv-d5{transition-delay:.35s}.rv-d6{transition-delay:.42s}
-.cut{clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--ease)}
-.cut.in{clip-path:inset(0 0 0 0)}
+.cut{position:relative}
+.cut::before{content:"";position:absolute;inset:0;z-index:5;background:var(--bg);
+  transform:scaleY(1);transform-origin:bottom;transition:transform 1s var(--ease)}
+.cut.in::before{transform:scaleY(0)}
 .mask-w{display:inline-block;overflow:hidden;vertical-align:bottom}
 .mask-w>span{display:inline-block;transform:translateY(102%);transition:transform .95s var(--ease)}
 .mask-w.in>span{transform:none}
@@ -115,11 +117,10 @@ main,header,footer{position:relative;z-index:2}
 
 /* ---------- hero ---------- */
 .hero{padding:132px 0 0;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:52px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,.72fr);gap:48px;align-items:center}
 .tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
 .tag i{width:22px;height:2px;background:var(--lime)}
-h1.h{font-size:clamp(44px,7.8vw,108px)}
-h1.h .lime{text-shadow:0 0 44px rgba(214,255,61,.35)}
+h1.h{font-size:clamp(36px,5.9vw,86px)}
 .hero-p{margin-top:28px;max-width:46ch;color:#B4B9AC;font-size:17px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
 .hero-vis{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid var(--line-2)}
@@ -321,7 +322,7 @@ footer a:hover{color:var(--lime)}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .rv{opacity:1;transform:none}.cut{clip-path:none}.mask-w>span{transform:none}
+  .rv{opacity:1;transform:none}.cut::before{display:none}.mask-w>span{transform:none}
   html{scroll-behavior:auto}.scan{display:none}
 }
 </style>
