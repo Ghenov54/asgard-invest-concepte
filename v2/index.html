@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ro" data-variant="v2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asgard Invest — Tencuială mecanizată | Varianta 2 „Industrial Neon”</title>
+<meta name="description" content="Asgard Invest — tencuială mecanizată. 5 echipe, 300 m² pe zi, stații mecanizate proprii. Moldova și Europa.">
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* ============================================================
+   ASGARD INVEST — VARIANTA 2: „INDUSTRIAL NEON”
+   Dark technical · lime acid · tipografie lată · HUD
+   ============================================================ */
+:root{
+  --bg:#0A0B09;
+  --bg-2:#101210;
+  --surf:#15171400;
+  --card:#141613;
+  --line:rgba(214,255,61,.16);
+  --line-2:rgba(255,255,255,.09);
+  --ink:#EDEFE8;
+  --muted:#8B9082;
+  --lime:#D6FF3D;
+  --lime-dk:#A8CC22;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1280px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3{
+  font-family:'Archivo','Inter',sans-serif;margin:0;text-transform:uppercase;
+  font-weight:800;font-variation-settings:'wdth' 118,'wght' 800;
+  letter-spacing:-.015em;line-height:.94;
+}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--lime);color:#0A0B09}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+section{position:relative}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+.lime{color:var(--lime)}
+
+/* fundal tehnic global */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 78%);
+}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.035;mix-blend-mode:overlay}
+main,header,footer{position:relative;z-index:2}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.07s}.rv-d2{transition-delay:.14s}.rv-d3{transition-delay:.21s}
+.rv-d4{transition-delay:.28s}.rv-d5{transition-delay:.35s}.rv-d6{transition-delay:.42s}
+.cut{clip-path:inset(0 0 100% 0);transition:clip-path 1s var(--ease)}
+.cut.in{clip-path:inset(0 0 0 0)}
+.mask-w{display:inline-block;overflow:hidden;vertical-align:bottom}
+.mask-w>span{display:inline-block;transform:translateY(102%);transition:transform .95s var(--ease)}
+.mask-w.in>span{transform:none}
+
+/* colțuri tehnice */
+.brk{position:relative}
+.brk::before,.brk::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid var(--lime);opacity:.75;transition:.4s var(--ease)}
+.brk::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.brk::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.brk:hover::before,.brk:hover::after{width:22px;height:22px}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s var(--ease);
+  background:rgba(10,11,9,0);border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(10,11,9,.86);backdrop-filter:blur(16px);border-bottom-color:var(--line-2)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:16px 26px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:16px;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.brand small{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:var(--lime);margin-top:2px}
+.nav-links{display:flex;gap:2px;margin-left:auto}
+.nav-links a{padding:9px 15px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;position:relative;color:#C9CDC1;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:15px;right:15px;bottom:4px;height:1px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav-links a:hover{color:var(--lime)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;
+  background:var(--lime);color:#0A0B09;padding:13px 22px;font-size:13px;font-weight:800;
+  letter-spacing:.09em;text-transform:uppercase;position:relative;overflow:hidden;
+  transition:box-shadow .35s var(--ease),transform .25s var(--ease);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%);
+}
+.btn svg{width:15px;height:15px;transition:transform .35s var(--ease)}
+.btn:hover{box-shadow:0 0 0 1px var(--lime),0 0 28px rgba(214,255,61,.45)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-gh{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.btn-gh:hover{color:var(--lime);box-shadow:inset 0 0 0 1.5px var(--lime),0 0 22px rgba(214,255,61,.16)}
+.btn-lg{padding:17px 30px;font-size:14px}
+.burger{display:none;width:44px;height:44px;background:transparent;border:1px solid var(--line-2);align-items:center;justify-content:center;cursor:pointer}
+.burger span{display:block;width:18px;height:1.5px;background:var(--lime);position:relative;transition:.3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--lime);transition:.3s}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.nav.open .burger span{background:transparent}
+.nav.open .burger span::before{top:0;transform:rotate(45deg)}
+.nav.open .burger span::after{top:0;transform:rotate(-45deg)}
+.mob{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:110px 26px 40px;flex-direction:column;gap:0}
+.mob.on{display:flex}
+.mob a{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(26px,8vw,40px);text-transform:uppercase;padding:16px 0;border-bottom:1px solid var(--line-2)}
+.mob a:hover{color:var(--lime)}
+
+/* ---------- hero ---------- */
+.hero{padding:132px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:52px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px}
+.tag i{width:22px;height:2px;background:var(--lime)}
+h1.h{font-size:clamp(44px,7.8vw,108px)}
+h1.h .lime{text-shadow:0 0 44px rgba(214,255,61,.35)}
+.hero-p{margin-top:28px;max-width:46ch;color:#B4B9AC;font-size:17px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero-vis{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid var(--line-2)}
+.hero-vis::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,11,9,.9) 100%)}
+.scan{position:absolute;left:0;right:0;height:120px;z-index:3;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(214,255,61,.13) 45%,rgba(214,255,61,.5) 50%,rgba(214,255,61,.13) 55%,transparent);
+  animation:scan 4.6s linear infinite}
+@keyframes scan{0%{transform:translateY(-140px)}100%{transform:translateY(calc(100% + 140px))}}
+.hero-hud{position:absolute;left:16px;top:16px;z-index:4;display:grid;gap:6px}
+.hud-l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--lime);background:rgba(10,11,9,.7);padding:5px 9px;border:1px solid var(--line)}
+.hero-num{position:absolute;right:18px;bottom:14px;z-index:4;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125,'wght' 800;font-size:88px;color:rgba(237,239,232,.09);line-height:.8}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-top:72px}
+.hs{padding:26px 24px;border-right:1px solid var(--line-2);position:relative;overflow:hidden}
+.hs:last-child{border-right:none}
+.hs::before{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--lime);transition:width .8s var(--ease)}
+.hs.in::before{width:100%}
+.hs .mono{color:var(--muted);display:block;margin-bottom:10px}
+.hs b{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 120,'wght' 800;font-size:clamp(28px,3.6vw,44px);line-height:1;display:block}
+.hs b em{font-style:normal;color:var(--lime);font-size:.55em}
+
+/* ---------- ticker ---------- */
+.tick{border-bottom:1px solid var(--line-2);padding:14px 0;overflow:hidden;white-space:nowrap;background:rgba(214,255,61,.03)}
+.tick-t{display:inline-flex;gap:30px;align-items:center;animation:tk 30s linear infinite}
+.tick:hover .tick-t{animation-play-state:paused}
+@keyframes tk{to{transform:translateX(-50%)}}
+.tick span{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A6AB9C}
+.tick i{width:5px;height:5px;background:var(--lime);display:inline-block;transform:rotate(45deg)}
+
+/* ---------- sectiuni ---------- */
+.sec{padding:112px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:34px;flex-wrap:wrap;margin-bottom:52px}
+h2.h2{font-size:clamp(30px,4.8vw,60px)}
+.sec-p{max-width:44ch;color:#A6AB9C;font-size:16.5px}
+
+/* ---------- despre / spec ---------- */
+.about{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.about-vis{position:relative;aspect-ratio:4/3.4;border:1px solid var(--line-2);overflow:hidden}
+.spec{border-top:1px solid var(--line-2);margin-top:34px}
+.spec-r{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line-2);transition:padding-left .4s var(--ease),color .3s}
+.spec-r:hover{padding-left:12px;color:var(--lime)}
+.spec-r svg{width:22px;height:22px;color:var(--lime)}
+.spec-r b{font-weight:600;font-size:15.5px}
+.spec-r .mono{color:var(--muted)}
+
+/* ---------- operatiuni (servicii) ---------- */
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.op{background:var(--bg);padding:34px 28px 30px;position:relative;overflow:hidden;transition:background .45s var(--ease);cursor:default;min-height:260px;display:flex;flex-direction:column}
+.op::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.op:hover{background:#12140F}
+.op:hover::before{transform:scaleX(1)}
+.op-ico{width:52px;height:52px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:.45s var(--ease);position:relative}
+.op-ico svg{width:28px;height:28px;color:var(--lime);transition:.45s var(--ease)}
+.op:hover .op-ico{background:var(--lime);border-color:var(--lime);box-shadow:0 0 30px rgba(214,255,61,.4)}
+.op:hover .op-ico svg{color:#0A0B09}
+.op h3{font-size:19px;font-variation-settings:'wdth' 110,'wght' 800;line-height:1.12}
+.op p{margin-top:12px;font-size:14.6px;color:var(--muted);line-height:1.58;flex:1}
+.op .mono{position:absolute;top:26px;right:26px;color:#4E5348;font-size:11px}
+.op-more{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-family:'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);opacity:0;transform:translateY(6px);transition:.4s var(--ease)}
+.op:hover .op-more{opacity:1;transform:none}
+.op-more svg{width:14px;height:14px}
+
+/* ---------- avantaje ---------- */
+.adv{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.adv-i{background:var(--bg-2);padding:30px 24px 32px;position:relative;transition:.4s var(--ease)}
+.adv-i:hover{background:#171A14}
+.adv-i .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--lime);letter-spacing:.18em;display:block;margin-bottom:18px}
+.adv-i svg{width:28px;height:28px;color:var(--ink);margin-bottom:16px;transition:.4s var(--ease)}
+.adv-i:hover svg{color:var(--lime);transform:translateY(-3px)}
+.adv-i b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112,'wght' 800;text-transform:uppercase;font-size:15.5px;line-height:1.15}
+.adv-i p{margin-top:10px;font-size:13.8px;color:var(--muted);line-height:1.55}
+
+/* ---------- proces ---------- */
+.track{position:relative;overflow-x:auto;padding-bottom:12px;scrollbar-width:thin}
+.track::-webkit-scrollbar{height:4px}
+.track::-webkit-scrollbar-thumb{background:var(--lime)}
+.track-in{display:grid;grid-template-columns:repeat(6,minmax(210px,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);min-width:min(100%,1240px)}
+.pstep{background:var(--bg);padding:28px 22px 30px;position:relative;transition:.5s var(--ease)}
+.pstep.on{background:#13160F}
+.pstep .pn{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125,'wght' 800;font-size:46px;line-height:1;color:rgba(237,239,232,.12);transition:.5s var(--ease)}
+.pstep.on .pn{color:var(--lime);text-shadow:0 0 30px rgba(214,255,61,.4)}
+.pstep b{display:block;margin-top:16px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 110,'wght' 800;text-transform:uppercase;font-size:15px;line-height:1.15}
+.pstep p{margin-top:10px;font-size:13.6px;color:var(--muted);line-height:1.55}
+.pstep .bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--lime);transition:width .7s var(--ease)}
+.pstep.on .bar{width:100%}
+
+/* ---------- before/after ---------- */
+.ba-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background:#000;cursor:ew-resize;user-select:none;border:1px solid var(--line-2)}
+.ba-layer{position:absolute;inset:0}
+.ba-after{clip-path:inset(0 0 0 50%)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--lime);z-index:5;transform:translateX(-50%);box-shadow:0 0 24px rgba(214,255,61,.7)}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:var(--lime);display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 40px rgba(214,255,61,.5)}
+.ba-knob svg{width:24px;height:24px;color:#0A0B09}
+.ba-tag{position:absolute;top:16px;z-index:4;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);background:rgba(10,11,9,.75);backdrop-filter:blur(4px)}
+.ba-tag.l{left:16px;color:#B4B9AC}.ba-tag.r{right:16px;background:var(--lime);color:#0A0B09;border-color:var(--lime)}
+
+/* ---------- calculator ---------- */
+.calc{border:1px solid var(--line);background:linear-gradient(180deg,rgba(214,255,61,.045),transparent 60%);padding:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:52px;align-items:center;position:relative}
+.calc-row{margin-bottom:30px}
+.calc-row label{display:block;margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.calc-val{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 120,'wght' 800;font-size:38px;line-height:1;margin-bottom:16px}
+.calc-val em{font-style:normal;color:var(--lime);font-size:.5em}
+.rng{width:100%;-webkit-appearance:none;height:2px;background:var(--line-2);outline:none;cursor:pointer}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--lime);cursor:grab;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 20px rgba(214,255,61,.6)}
+.rng::-moz-range-thumb{width:20px;height:20px;background:var(--lime);border:none;cursor:grab}
+.teams{display:flex;gap:8px;flex-wrap:wrap}
+.team-b{width:52px;height:52px;background:transparent;border:1px solid var(--line-2);color:var(--ink);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 120,'wght' 800;font-size:17px;transition:.25s}
+.team-b:hover{border-color:var(--lime);color:var(--lime)}
+.team-b.on{background:var(--lime);color:#0A0B09;border-color:var(--lime);box-shadow:0 0 24px rgba(214,255,61,.35)}
+.calc-out{border:1px solid var(--line);padding:38px 30px;text-align:center;background:rgba(214,255,61,.04);position:relative}
+.calc-out .big{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 125,'wght' 800;font-size:clamp(58px,8vw,96px);color:var(--lime);line-height:.9;text-shadow:0 0 50px rgba(214,255,61,.35)}
+.calc-out .lbl{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.calc-out .sub{margin-top:22px;padding-top:20px;border-top:1px solid var(--line-2);font-size:14px;color:#A6AB9C}
+.calc-note{margin-top:6px;font-size:13px;color:#6E7367;font-family:'JetBrains Mono',monospace;line-height:1.7;letter-spacing:.02em;text-transform:none}
+
+/* ---------- geo ---------- */
+.geo{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2)}
+.geo-c{padding:44px 38px;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:var(--bg)}
+.geo-c h3{font-size:clamp(24px,3.2vw,36px)}
+.geo-c p{margin-top:14px;color:var(--muted);max-width:34ch;font-size:15.5px}
+.geo-c svg.map{position:absolute;right:-24px;top:-16px;width:220px;color:var(--lime);opacity:.13}
+.geo-c:hover svg.map{opacity:.22}
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid var(--line-2)}
+.faq-i{border-bottom:1px solid var(--line-2)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:26px 48px 26px 0;cursor:pointer;position:relative;
+  font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 110,'wght' 800;text-transform:uppercase;
+  font-size:clamp(16px,2vw,22px);line-height:1.25;transition:color .3s}
+.faq-q:hover{color:var(--lime)}
+.faq-q::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--lime);transition:transform .4s var(--ease)}
+.faq-i.on .faq-q::after{transform:translateY(-50%) rotate(135deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.faq-a p{padding:0 60px 28px 0;color:var(--muted);font-size:15.5px}
+
+/* ---------- CTA ---------- */
+.cta{text-align:center;padding:110px 0;position:relative;overflow:hidden;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.cta::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:900px;height:520px;
+  background:radial-gradient(ellipse,rgba(214,255,61,.14),transparent 68%);pointer-events:none;filter:blur(8px)}
+.cta h2{font-size:clamp(34px,7.4vw,92px);position:relative}
+.cta h2 .ghost{color:transparent;-webkit-text-stroke:1.5px rgba(237,239,232,.24)}
+.cta-p{margin:24px auto 0;max-width:52ch;color:#A6AB9C;position:relative}
+.cta-b{display:flex;gap:14px;justify-content:center;margin-top:38px;flex-wrap:wrap;position:relative}
+
+/* ---------- form ---------- */
+.form-sec{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.cont-l{display:grid;gap:1px;background:var(--line-2);border:1px solid var(--line-2);margin-top:32px}
+.cont-l a,.cont-l div{background:var(--bg);padding:20px 22px;display:flex;align-items:center;gap:14px;transition:background .3s}
+.cont-l a:hover{background:#13160F;color:var(--lime)}
+.cont-l svg{width:20px;height:20px;color:var(--lime);flex:none}
+.cont-l b{font-weight:600;font-size:15.5px;display:block}
+.cont-l span{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.form{border:1px solid var(--line-2);padding:34px;background:var(--bg-2)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.inp{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--line-2);color:var(--ink);font-size:15px;transition:border-color .25s,box-shadow .25s}
+.inp::placeholder{color:#5F6459}
+.inp:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(214,255,61,.1);outline:none}
+textarea.inp{min-height:96px;resize:vertical}
+.form .btn{width:100%;justify-content:center;margin-top:8px}
+.form-ok{display:none;margin-top:14px;border:1px solid var(--lime);background:rgba(214,255,61,.08);padding:14px 16px;font-size:14.5px;color:var(--lime)}
+.form-ok.on{display:block}
+
+/* ---------- footer ---------- */
+footer{padding:70px 0 28px;border-top:1px solid var(--line-2);color:var(--muted)}
+.f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px}
+.f-brand svg{width:44px;height:44px;margin-bottom:18px}
+.f-brand p{margin-top:14px;font-size:14.5px;max-width:32ch;line-height:1.6}
+footer h4{color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;margin:0 0 18px}
+footer ul{padding:0;margin:0}footer li{list-style:none;margin-bottom:11px;font-size:14.5px}
+footer a:hover{color:var(--lime)}
+.f-bot{margin-top:56px;padding-top:22px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .ops{grid-template-columns:repeat(2,1fr)}
+  .adv{grid-template-columns:repeat(2,1fr)}
+  .calc{grid-template-columns:1fr;gap:34px;padding:30px}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .nav-links{display:none}.burger{display:flex}
+  .hero{padding-top:104px}
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .about{grid-template-columns:1fr;gap:34px}
+  .form-sec{grid-template-columns:1fr;gap:34px}
+  .geo{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hs{border-bottom:1px solid var(--line-2)}
+}
+@media(max-width:640px){
+  .sec{padding:74px 0}
+  .ops{grid-template-columns:1fr}
+  .adv{grid-template-columns:1fr}
+  .fr{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .ba-wrap{aspect-ratio:4/3}
+  .calc-out{padding:28px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rv{opacity:1;transform:none}.cut{clip-path:none}.mask-w>span{transform:none}
+  html{scroll-behavior:auto}.scan{display:none}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<svg class="noise" aria-hidden="true"><filter id="n2"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4"/></filter><rect width="100%" height="100%" filter="url(#n2)"/></svg>
+
+<!-- ==================== ICON SPRITE ==================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-machine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="10" height="9" rx="1.5"/><path d="M4.8 8V5.6h5.4V8"/><circle cx="5.4" cy="19" r="1.7"/><circle cx="10.4" cy="19" r="1.7"/>
+    <path d="M12.5 10.4h3.2l2.4-3.1h3.4"/><path d="M19.6 4.6l2.2 2.7-2.2 2.7"/><path d="M5.6 12.4h3.8"/></symbol>
+  <symbol id="i-trowel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.4 13.6 12 5l6.4 6.4-8.6 8.6-6.4-6.4z"/><path d="m14.4 7 3.1-3.1a2 2 0 0 1 2.8 0v0a2 2 0 0 1 0 2.8L17.2 9.8"/><path d="M7.2 12.4 11 16.2"/></symbol>
+  <symbol id="i-wall" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1"/><path d="M2.6 9.5h18.8M2.6 14.6h18.8M9 4.4v5.1M15.6 9.5v5.1M9 14.6v5"/></symbol>
+  <symbol id="i-sqm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.4 8.6V3.6h5"/><path d="M20.6 15.4v5h-5"/><rect x="3.4" y="3.6" width="17.2" height="16.8" opacity=".35"/>
+    <path d="M8.4 14.8h3.3M8.4 14.8c0-1.5 3.3-2 3.3-3.6a1.65 1.65 0 0 0-3.3 0"/><path d="M14.4 15v-3.9l1.3 1.9 1.3-1.9V15"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 20v-1.6a3.4 3.4 0 0 1 3.4-3.4h2.2a3.4 3.4 0 0 1 3.4 3.4V20"/><circle cx="8.5" cy="9.4" r="2.9"/>
+    <path d="M6 7.4a5.6 5.6 0 0 1 5 0"/><path d="M16 20v-1.6a3.4 3.4 0 0 0-1.6-2.9"/><path d="M15.4 6.7a2.9 2.9 0 0 1 0 5.5"/><path d="M20 20v-2.2a3 3 0 0 0-1.5-2.5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.6 6.6h10.2v9.8H2.6z"/><path d="M12.8 10.2h3.6l3.6 3v3.2h-7.2"/><circle cx="6.6" cy="18.2" r="1.8"/><circle cx="16.6" cy="18.2" r="1.8"/><path d="M5 10.4h5.4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12.6" r="8.2"/><path d="M12 8v4.6l3 1.8"/><path d="M9.4 2.6h5.2"/></symbol>
+  <symbol id="i-europe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/><path d="M3.2 9.6h17.6M3.2 14.4h17.6"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.8 4.6 6v6.1c0 4.4 3.1 7.6 7.4 9.1 4.3-1.5 7.4-4.7 7.4-9.1V6z"/><path d="m8.8 12 2.3 2.3 4.1-4.5"/></symbol>
+  <symbol id="i-level" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.4" y="8.4" width="19.2" height="7.2" rx="1"/><circle cx="12" cy="12" r="2.2"/><path d="M6.6 10.4v3.2M17.4 10.4v3.2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2.6 4.6 13.4h6.2l-1 8 8.8-10.8h-6.2z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2.8H6.8A1.8 1.8 0 0 0 5 4.6v14.8a1.8 1.8 0 0 0 1.8 1.8h10.4a1.8 1.8 0 0 0 1.8-1.8V7.8z"/><path d="M14 2.8v5h5"/><path d="M8.4 12.6h7.2M8.4 16.2h4.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13 5.5l6.5 6.5L13 18.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.9v2.7a1.8 1.8 0 0 1-2 1.8 17.8 17.8 0 0 1-7.7-2.8 17.5 17.5 0 0 1-5.4-5.4A17.8 17.8 0 0 1 3.6 5.4a1.8 1.8 0 0 1 1.8-2h2.7a1.8 1.8 0 0 1 1.8 1.6c.1 1 .3 1.9.7 2.8a1.8 1.8 0 0 1-.4 1.9l-1.1 1.1a14.4 14.4 0 0 0 5.4 5.4l1.1-1.1a1.8 1.8 0 0 1 1.9-.4c.9.3 1.8.6 2.8.7a1.8 1.8 0 0 1 1.6 1.8z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.8" width="18.8" height="14.4" rx="1"/><path d="m2.6 6.6 9.4 6.6 9.4-6.6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.4c0 6.2-8 12.4-8 12.4s-8-6.2-8-12.4a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.2" r="2.9"/></symbol>
+  <symbol id="i-drag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 7.4 4 12l4.6 4.6M15.4 7.4 20 12l-4.6 4.6"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 48 48" fill="none">
+    <path d="M2 2h44v44H2z" fill="none" stroke="#D6FF3D" stroke-width="1.6"/>
+    <path d="M13 34 24 12l11 22" stroke="#D6FF3D" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M18.4 27.6h11.2" stroke="#D6FF3D" stroke-width="3.4" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<!-- ==================== NAV ==================== -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand"><svg><use href="#i-logo"/></svg><span><b>Asgard Invest</b><small>TENCUIALĂ MECANIZATĂ</small></span></a>
+    <nav class="nav-links">
+      <a href="#operatiuni">Operațiuni</a><a href="#dece">De ce noi</a><a href="#proces">Proces</a>
+      <a href="#rezultat">Rezultat</a><a href="#calcul">Calculator</a>
+    </nav>
+    <a href="#contact" class="btn">Cere ofertă <svg><use href="#i-arrow"/></svg></a>
+    <button class="burger" id="burger" aria-label="Meniu"><span></span></button>
+  </div>
+</header>
+<div class="mob" id="mob">
+  <a href="#operatiuni">Operațiuni</a><a href="#dece">De ce noi</a><a href="#proces">Proces</a>
+  <a href="#rezultat">Rezultat</a><a href="#calcul">Calculator</a><a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">Moldova &amp; Europa · din 2016</span></div>
+        <h1 class="h">
+          <span class="mask-w" id="w1"><span>TENCUIALĂ</span></span><br>
+          <span class="mask-w" id="w2"><span class="lime">MECANIZATĂ</span></span><br>
+          <span class="mask-w" id="w3"><span>LA SCARĂ.</span></span>
+        </h1>
+        <p class="hero-p rv rv-d3">Stații mecanizate proprii și 5 echipe specializate. 300 m² pe zi de echipă, suprafețe uniforme și termene respectate — de la un apartament la o hală întreagă.</p>
+        <div class="hero-cta rv rv-d4">
+          <a href="#contact" class="btn btn-lg">Începe proiectul <svg><use href="#i-arrow"/></svg></a>
+          <a href="#rezultat" class="btn btn-gh btn-lg">Vezi rezultatul</a>
+        </div>
+      </div>
+      <div class="hero-vis rv rv-d2 brk">
+        <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <defs>
+            <filter id="v2r"><feTurbulence type="fractalNoise" baseFrequency="0.03 0.045" numOctaves="5" seed="9"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".9"/></feComponentTransfer></filter>
+            <filter id="v2f"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".18"/></feComponentTransfer></filter>
+            <clipPath id="v2c"><rect x="0" y="0" width="600" height="330"/></clipPath>
+          </defs>
+          <rect width="600" height="600" fill="#23261F"/>
+          <rect width="600" height="600" filter="url(#v2f)" opacity=".6"/>
+          <g clip-path="url(#v2c)">
+            <rect width="600" height="600" fill="#1A1C17"/>
+            <rect width="600" height="600" filter="url(#v2r)" opacity=".8"/>
+            <g stroke="#2E322A" stroke-width="2.4">
+              <path d="M0 82h600M0 164h600M0 246h600M0 328h600"/>
+              <path d="M120 0v82M320 0v82M520 0v82M20 82v82M220 82v82M420 82v82M120 164v82M320 164v82M520 164v82M20 246v82M220 246v82M420 246v82"/>
+            </g>
+          </g>
+          <rect x="0" y="328" width="600" height="3" fill="#D6FF3D"/>
+          <g stroke="#D6FF3D" stroke-width="1.2" opacity=".55" fill="none">
+            <path d="M40 400h520M40 420h300M40 440h420"/>
+            <circle cx="500" cy="480" r="46"/><circle cx="500" cy="480" r="28"/><path d="M500 434v92M454 480h92"/>
+          </g>
+          <g fill="#D6FF3D">
+            <rect x="40" y="500" width="60" height="4"/><rect x="40" y="514" width="120" height="4" opacity=".5"/><rect x="40" y="528" width="90" height="4" opacity=".3"/>
+          </g>
+        </svg>
+        <div class="scan"></div>
+        <div class="hero-hud">
+          <span class="hud-l">STAȚIE MECANIZATĂ · ACTIVĂ</span>
+          <span class="hud-l">DEBIT: 300 m² / ZI / ECHIPĂ</span>
+        </div>
+        <div class="hero-num">01</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hs rv"><span class="mono">Echipe</span><b><span class="cnt" data-to="5">0</span></b></div>
+      <div class="hs rv rv-d1"><span class="mono">Muncitori</span><b><span class="cnt" data-to="25">0</span></b></div>
+      <div class="hs rv rv-d2"><span class="mono">Pe zi / echipă</span><b><span class="cnt" data-to="300">0</span><em> m²</em></b></div>
+      <div class="hs rv rv-d3"><span class="mono">Capacitate max.</span><b><span class="cnt" data-to="1500">0</span><em> m²</em></b></div>
+    </div>
+  </div>
+</section>
+
+<div class="tick"><div class="tick-t" id="tick"></div></div>
+
+<!-- ==================== DESPRE ==================== -->
+<section class="sec" id="despre">
+  <div class="wrap about">
+    <div class="about-vis rv cut">
+      <svg viewBox="0 0 520 440" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+        <defs>
+          <filter id="v2p"><feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="4" seed="14"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".26"/></feComponentTransfer></filter>
+          <linearGradient id="v2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22251E"/><stop offset="1" stop-color="#0E100C"/></linearGradient>
+        </defs>
+        <rect width="520" height="440" fill="url(#v2g)"/>
+        <rect width="520" height="440" filter="url(#v2p)" opacity=".8"/>
+        <g stroke="#D6FF3D" fill="none" opacity=".5" stroke-width="1.4">
+          <path d="M60 380V150l90-56 90 56v230"/><path d="M250 380V190l100-52 100 52v190"/>
+          <path d="M96 380v-58h44v58M186 380v-58h34v58M290 380v-52h40v52M372 380v-52h38v52"/>
+          <path d="M20 380h480"/>
+        </g>
+        <g stroke="#D6FF3D" stroke-width="1" opacity=".28" stroke-dasharray="4 5">
+          <path d="M60 94h380M60 138h380"/><path d="M40 94v286"/>
+        </g>
+        <text x="46" y="86" fill="#D6FF3D" font-family="monospace" font-size="12" opacity=".7">H = 2.8 m</text>
+      </svg>
+    </div>
+    <div>
+      <div class="tag rv"><i></i><span class="mono lime">// 01 — Despre companie</span></div>
+      <h2 class="h2 rv rv-d1">CONSTRUIM<br>SUPRAFEȚE<br><span class="lime">PERFECT DREPTE</span></h2>
+      <p class="sec-p rv rv-d2" style="margin-top:24px">Asgard Invest execută lucrări de tencuială mecanizată pentru proiecte rezidențiale, comerciale și industriale. Stații moderne, echipe specializate și un proces standardizat — de aici vine calitatea constantă.</p>
+      <div class="spec">
+        <div class="spec-r rv rv-d2"><svg><use href="#i-machine"/></svg><b>Stații mecanizate proprii</b><span class="mono">ECHIPAMENT</span></div>
+        <div class="spec-r rv rv-d3"><svg><use href="#i-team"/></svg><b>5 echipe × 5 muncitori</b><span class="mono">RESURSĂ</span></div>
+        <div class="spec-r rv rv-d4"><svg><use href="#i-truck"/></svg><b>Furnizăm și materialele</b><span class="mono">LOGISTICĂ</span></div>
+        <div class="spec-r rv rv-d5"><svg><use href="#i-europe"/></svg><b>Moldova și țările europene</b><span class="mono">ACOPERIRE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OPERATIUNI ==================== -->
+<section class="sec" id="operatiuni" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 02 — Capabilități</span></div>
+        <h2 class="h2 rv rv-d1">OPERAȚIUNILE NOASTRE</h2>
+      </div>
+      <p class="sec-p rv rv-d2">Același proces mecanizat, de la un apartament la o hală industrială.</p>
+    </div>
+    <div class="ops">
+      <article class="op rv"><span class="mono">01</span><div class="op-ico"><svg><use href="#i-wall"/></svg></div><h3>Pereți și tavane</h3><p>Aplicare mecanizată cu grosime constantă, pe suprafețe interioare gata de finisaj.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+      <article class="op rv rv-d1"><span class="mono">02</span><div class="op-ico"><svg><use href="#i-sqm"/></svg></div><h3>Suprafețe mari</h3><p>Blocuri, hale și spații comerciale. Mobilizăm mai multe echipe în paralel.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+      <article class="op rv rv-d2"><span class="mono">03</span><div class="op-ico"><svg><use href="#i-level"/></svg></div><h3>Pregătire &amp; nivelare</h3><p>Curățare, amorsare, repere și nivelare — baza unui perete cu adevărat drept.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+      <article class="op rv rv-d1"><span class="mono">04</span><div class="op-ico"><svg><use href="#i-trowel"/></svg></div><h3>Rezidențial &amp; comercial</h3><p>Apartamente, case, blocuri noi și clădiri comerciale, cu grafic adaptat șantierului.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+      <article class="op rv rv-d2"><span class="mono">05</span><div class="op-ico"><svg><use href="#i-truck"/></svg></div><h3>Furnizare materiale</h3><p>La cerere livrăm și aplicăm materialul. Clientul nu se ocupă de aprovizionare.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+      <article class="op rv rv-d3"><span class="mono">06</span><div class="op-ico"><svg><use href="#i-europe"/></svg></div><h3>Proiecte în UE</h3><p>Analizăm și executăm lucrări în afara Moldovei, pentru volume potrivite.</p><span class="op-more">Detalii <svg><use href="#i-arrow"/></svg></span></article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DE CE NOI ==================== -->
+<section class="sec" id="dece" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 03 — Avantaje</span></div>
+        <h2 class="h2 rv rv-d1">OPT MOTIVE.<br>ZERO COMPROMIS.</h2>
+      </div>
+    </div>
+    <div class="adv">
+      <div class="adv-i rv"><span class="n">A/01</span><svg><use href="#i-bolt"/></svg><b>Productivitate mare</b><p>Până la 300 m² pe zi de o singură echipă, în funcție de condițiile șantierului.</p></div>
+      <div class="adv-i rv rv-d1"><span class="n">A/02</span><svg><use href="#i-level"/></svg><b>Suprafață uniformă</b><p>Aplicarea mecanizată dă o grosime și o calitate mult mai constante.</p></div>
+      <div class="adv-i rv rv-d2"><span class="n">A/03</span><svg><use href="#i-clock"/></svg><b>Economisește timp</b><p>Lucrările se finalizează mult mai rapid decât prin aplicare manuală.</p></div>
+      <div class="adv-i rv rv-d3"><span class="n">A/04</span><svg><use href="#i-team"/></svg><b>Echipe proprii</b><p>Muncitori cu experiență și stații mecanizate proprii, nu subcontractori.</p></div>
+      <div class="adv-i rv rv-d1"><span class="n">A/05</span><svg><use href="#i-truck"/></svg><b>Aducem materialele</b><p>Preluăm tot lanțul de aprovizionare, la solicitarea clientului.</p></div>
+      <div class="adv-i rv rv-d2"><span class="n">A/06</span><svg><use href="#i-europe"/></svg><b>Acoperire largă</b><p>Toată Moldova, plus proiecte analizate în țările europene.</p></div>
+      <div class="adv-i rv rv-d3"><span class="n">A/07</span><svg><use href="#i-doc"/></svg><b>Ofertă personalizată</b><p>Preț calculat pe suprafață și pe condițiile reale ale lucrării.</p></div>
+      <div class="adv-i rv rv-d4"><span class="n">A/08</span><svg><use href="#i-shield"/></svg><b>Termene respectate</b><p>Organizăm lucrările ca să reducem timpul pierdut pe șantier.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROCES ==================== -->
+<section class="sec" id="proces" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 04 — Flux de lucru</span></div>
+        <h2 class="h2 rv rv-d1">ȘASE PAȘI</h2>
+      </div>
+      <p class="sec-p rv rv-d2">De la primul telefon până la peretele gata de finisaj.</p>
+    </div>
+    <div class="track" id="track">
+      <div class="track-in">
+        <div class="pstep"><div class="pn">01</div><b>Contact &amp; măsurare</b><p>Discutăm obiectul, verificăm suprafețele și accesul.</p><i class="bar"></i></div>
+        <div class="pstep"><div class="pn">02</div><b>Ofertă</b><p>Preț pe m², în funcție de volum și starea pereților.</p><i class="bar"></i></div>
+        <div class="pstep"><div class="pn">03</div><b>Planificare</b><p>Alocăm 1–5 echipe, în funcție de termenul dorit.</p><i class="bar"></i></div>
+        <div class="pstep"><div class="pn">04</div><b>Pregătire</b><p>Curățare, amorsare, repere și protejarea zonelor.</p><i class="bar"></i></div>
+        <div class="pstep"><div class="pn">05</div><b>Aplicare</b><p>Stația aplică materialul continuu, la grosimea stabilită.</p><i class="bar"></i></div>
+        <div class="pstep"><div class="pn">06</div><b>Predare</b><p>Nivelăm, verificăm planeitatea, predăm suprafața.</p><i class="bar"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REZULTAT ==================== -->
+<section class="sec" id="rezultat" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 05 — Rezultat</span></div>
+        <h2 class="h2 rv rv-d1">ÎNAINTE / DUPĂ</h2>
+      </div>
+      <p class="sec-p rv rv-d2">Trage de cursor: perete brut vs. perete tencuit mecanizat.</p>
+    </div>
+    <div class="ba-wrap rv rv-d1" id="ba">
+      <div class="ba-layer">
+        <svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <defs><filter id="v2bR"><feTurbulence type="fractalNoise" baseFrequency="0.028 0.042" numOctaves="5" seed="31"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".92"/></feComponentTransfer></filter></defs>
+          <rect width="1200" height="675" fill="#20231C"/>
+          <rect width="1200" height="675" filter="url(#v2bR)" opacity=".95"/>
+          <g stroke="#2C3027" stroke-width="3">
+            <path d="M0 112h1200M0 224h1200M0 336h1200M0 448h1200M0 560h1200"/>
+            <path d="M150 0v112M450 0v112M750 0v112M1050 0v112M0 112v112M300 112v112M600 112v112M900 112v112M150 224v112M450 224v112M750 224v112M1050 224v112M0 336v112M300 336v112M600 336v112M900 336v112M150 448v112M450 448v112M750 448v112M1050 448v112M0 560v115M300 560v115M600 560v115M900 560v115"/>
+          </g>
+        </svg>
+      </div>
+      <div class="ba-layer ba-after" id="baAfter">
+        <svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <defs>
+            <filter id="v2bS"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="6"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer></filter>
+            <linearGradient id="v2bg" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#5A6050"/><stop offset=".55" stop-color="#3C4136"/><stop offset="1" stop-color="#24271F"/></linearGradient>
+          </defs>
+          <rect width="1200" height="675" fill="url(#v2bg)"/>
+          <rect width="1200" height="675" filter="url(#v2bS)" opacity=".5"/>
+          <ellipse cx="900" cy="150" rx="440" ry="280" fill="#D6FF3D" opacity=".07"/>
+        </svg>
+      </div>
+      <span class="ba-tag l">BRUT · NETENCUIT</span>
+      <span class="ba-tag r">MECANIZAT · FINISAT</span>
+      <div class="ba-handle" id="baHandle"><div class="ba-knob"><svg><use href="#i-drag"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CALCULATOR ==================== -->
+<section class="sec" id="calcul" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 06 — Estimare</span></div>
+        <h2 class="h2 rv rv-d1">CALCULEAZĂ TERMENUL</h2>
+      </div>
+    </div>
+    <div class="calc rv brk">
+      <div>
+        <div class="calc-row">
+          <label for="sqm">Suprafață de tencuit</label>
+          <div class="calc-val"><span id="sqmV">600</span> <em>m²</em></div>
+          <input type="range" class="rng" id="sqm" min="50" max="10000" step="50" value="600">
+        </div>
+        <div class="calc-row" style="margin-bottom:22px">
+          <label>Echipe alocate</label>
+          <div class="teams" id="teams">
+            <button class="team-b on" data-t="1">1</button><button class="team-b" data-t="2">2</button>
+            <button class="team-b" data-t="3">3</button><button class="team-b" data-t="4">4</button>
+            <button class="team-b" data-t="5">5</button>
+          </div>
+        </div>
+        <p class="calc-note">&gt; estimare orientativă: ~300 m²/zi/echipă<br>&gt; termenul final depinde de acces, energie, apă și starea pereților</p>
+      </div>
+      <div class="calc-out">
+        <div class="big"><span id="days">2</span></div>
+        <div class="lbl" id="daysLbl">zile de lucru</div>
+        <div class="sub"><span id="capacity">300</span> m²/zi · <span id="tcount">1</span> echipă · <span id="workers">5</span> muncitori</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GEO ==================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 07 — Acoperire</span></div>
+        <h2 class="h2 rv rv-d1">UNDE LUCRĂM</h2>
+      </div>
+    </div>
+    <div class="geo">
+      <div class="geo-c rv"><svg class="map" viewBox="0 0 24 24"><use href="#i-pin"/></svg><h3>TOATĂ <span class="lime">MOLDOVA</span></h3><p>Chișinău și restul țării — ne deplasăm cu echipa și cu stația la obiect, indiferent de raion.</p></div>
+      <div class="geo-c rv rv-d1"><svg class="map" viewBox="0 0 24 24"><use href="#i-europe"/></svg><h3>ȚĂRI <span class="lime">EUROPENE</span></h3><p>Analizăm și executăm proiecte în afara Moldovei, pentru volume care justifică deplasarea echipelor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h">
+      <div>
+        <div class="tag rv"><i></i><span class="mono lime">// 08 — Întrebări</span></div>
+        <h2 class="h2 rv rv-d1">ÎNTREBĂRI FRECVENTE</h2>
+      </div>
+    </div>
+    <div class="faq rv">
+      <div class="faq-i"><button class="faq-q">Cât costă tencuiala mecanizată?</button><div class="faq-a"><p>Prețul se calculează personalizat, în funcție de suprafață, grosimea necesară și condițiile lucrării. Trimite-ne suprafața aproximativă și tipul obiectului, iar noi revenim cu o ofertă clară.</p></div></div>
+      <div class="faq-i"><button class="faq-q">Cât durează lucrarea?</button><div class="faq-a"><p>O echipă execută în medie 300 m² pe zi. Pentru volume mari alocăm mai multe echipe simultan — până la 1 500 m² pe zi.</p></div></div>
+      <div class="faq-i"><button class="faq-q">Cine se ocupă de materiale?</button><div class="faq-a"><p>La solicitarea clientului furnizăm și aplicăm noi materialele. Dacă preferi să le procuri singur, lucrăm și cu materialul tău.</p></div></div>
+      <div class="faq-i"><button class="faq-q">Ce trebuie pregătit înainte?</button><div class="faq-a"><p>Acces la energie electrică și apă, spațiu pentru stație și pereți liberi. Restul — curățare, amorsare, montarea reperelor — intră în procesul nostru.</p></div></div>
+      <div class="faq-i"><button class="faq-q">Lucrați și în afara Moldovei?</button><div class="faq-a"><p>Da. Executăm lucrări în toată Moldova și analizăm proiecte în țările europene, atunci când volumul justifică deplasarea unei echipe complete.</p></div></div>
+      <div class="faq-i"><button class="faq-q">Ce tipuri de obiecte acceptați?</button><div class="faq-a"><p>Apartamente, case individuale, blocuri noi, spații comerciale și clădiri industriale — de la volume mici la proiecte de mii de metri pătrați.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="rv">GATA SĂ<br><span class="ghost">TENCUIM?</span></h2>
+    <p class="cta-p rv rv-d1">Spune-ne suprafața și localitatea — îți trimitem o ofertă personalizată, fără obligații.</p>
+    <div class="cta-b rv rv-d2">
+      <a href="#contact" class="btn btn-lg">Cere ofertă <svg><use href="#i-arrow"/></svg></a>
+      <a href="tel:+37360000000" class="btn btn-gh btn-lg"><svg><use href="#i-phone"/></svg> +373 60 000 000</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="sec" id="contact">
+  <div class="wrap form-sec">
+    <div>
+      <div class="tag rv"><i></i><span class="mono lime">// 09 — Contact</span></div>
+      <h2 class="h2 rv rv-d1">HAI SĂ<br>VORBIM.</h2>
+      <div class="cont-l">
+        <a href="tel:+37360000000" class="rv rv-d2"><svg><use href="#i-phone"/></svg><div><span>Telefon</span><b>+373 60 000 000</b></div></a>
+        <a href="mailto:contact@asgardinvest.md" class="rv rv-d3"><svg><use href="#i-mail"/></svg><div><span>Email</span><b>contact@asgardinvest.md</b></div></a>
+        <div class="rv rv-d4"><svg><use href="#i-pin"/></svg><div><span>Sediu</span><b>Chișinău, Republica Moldova</b></div></div>
+        <div class="rv rv-d5"><svg><use href="#i-clock"/></svg><div><span>Program</span><b>Luni–Sâmbătă, 08:00–18:00</b></div></div>
+      </div>
+    </div>
+    <form class="form rv rv-d2" id="form">
+      <div class="fr">
+        <input class="inp" type="text" placeholder="Nume" aria-label="Nume" required>
+        <input class="inp" type="tel" placeholder="Telefon" aria-label="Telefon" required>
+      </div>
+      <div class="fr">
+        <input class="inp" type="text" placeholder="Localitate" aria-label="Localitate">
+        <input class="inp" type="number" placeholder="Suprafață (m²)" aria-label="Suprafață">
+      </div>
+      <div style="margin-bottom:12px">
+        <select class="inp" aria-label="Tip obiect">
+          <option>Apartament</option><option>Casă</option><option>Bloc locativ</option>
+          <option>Spațiu comercial</option><option>Hală / industrial</option>
+        </select>
+      </div>
+      <textarea class="inp" placeholder="Detalii despre lucrare (opțional)" aria-label="Detalii"></textarea>
+      <button type="submit" class="btn btn-lg">Trimite cererea <svg><use href="#i-arrow"/></svg></button>
+      <div class="form-ok" id="ok">&gt; CERERE ÎNREGISTRATĂ. Te contactăm în cel mult 24 de ore.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <svg><use href="#i-logo"/></svg>
+        <h3 style="font-size:20px">Asgard Invest</h3>
+        <p>Lucrări de tencuială mecanizată pentru proiecte rezidențiale, comerciale și industriale. Profesionalism, viteză și calitate în fiecare proiect.</p>
+      </div>
+      <div><h4>Operațiuni</h4><ul>
+        <li><a href="#operatiuni">Pereți și tavane</a></li><li><a href="#operatiuni">Suprafețe mari</a></li>
+        <li><a href="#operatiuni">Nivelare</a></li><li><a href="#operatiuni">Furnizare materiale</a></li></ul></div>
+      <div><h4>Companie</h4><ul>
+        <li><a href="#despre">Despre</a></li><li><a href="#proces">Proces</a></li>
+        <li><a href="#rezultat">Rezultat</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="tel:+37360000000">+373 60 000 000</a></li>
+        <li><a href="mailto:contact@asgardinvest.md">contact@asgardinvest.md</a></li>
+        <li>Chișinău, Republica Moldova</li><li>Luni–Sâmbătă, 08:00–18:00</li></ul></div>
+    </div>
+    <div class="f-bot"><span>© 2026 Asgard Invest</span><span>Machetă · Varianta 2 „Industrial Neon”</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv,.cut,.mask-w,.hs').forEach(function(el){io.observe(el);});
+setTimeout(function(){['w1','w2','w3'].forEach(function(id,i){setTimeout(function(){var e=document.getElementById(id);if(e)e.classList.add('in');},i*130);});},100);
+
+/* nav */
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('stuck',window.scrollY>30);},{passive:true});
+var mob=document.getElementById('mob');
+document.getElementById('burger').addEventListener('click',function(){
+  nav.classList.toggle('open');mob.classList.toggle('on');
+  document.body.style.overflow=mob.classList.contains('on')?'hidden':'';});
+mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+  nav.classList.remove('open');mob.classList.remove('on');document.body.style.overflow='';});});
+
+/* ticker */
+var items=['Tencuială mecanizată','Pereți și tavane','Apartamente','Case','Blocuri locative','Spații comerciale','Hale industriale','Moldova &amp; UE','300 m² / zi / echipă','5 echipe specializate'];
+var h='';for(var r=0;r<2;r++){items.forEach(function(w){h+='<span>'+w+'</span><i></i>';});}
+document.getElementById('tick').innerHTML=h;
+
+/* counters */
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,t0=null,dur=1600;
+  if(reduce){el.textContent=to.toLocaleString('ro-RO');return;}
+  function s(t){if(!t0)t0=t;var p=Math.min((t-t0)/dur,1);
+    el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ro-RO');
+    if(p<1)requestAnimationFrame(s);}
+  requestAnimationFrame(s);});},{threshold:.5});
+document.querySelectorAll('.cnt').forEach(function(el){cio.observe(el);});
+
+/* proces */
+var ps=document.querySelectorAll('.pstep');
+var pio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return;pio.unobserve(e.target);
+  ps.forEach(function(s,i){setTimeout(function(){s.classList.add('on');},i*170);});});},{threshold:.25});
+if(document.getElementById('track'))pio.observe(document.getElementById('track'));
+
+/* before/after */
+var ba=document.getElementById('ba'),baA=document.getElementById('baAfter'),baH=document.getElementById('baHandle'),drag=false;
+function setBA(x){var r=ba.getBoundingClientRect();var p=Math.min(Math.max((x-r.left)/r.width,.02),.98);
+  baA.style.clipPath='inset(0 0 0 '+(p*100)+'%)';baH.style.left=(p*100)+'%';}
+['mousedown','touchstart'].forEach(function(ev){ba.addEventListener(ev,function(e){drag=true;setBA((e.touches?e.touches[0]:e).clientX);},{passive:true});});
+['mousemove','touchmove'].forEach(function(ev){window.addEventListener(ev,function(e){if(drag)setBA((e.touches?e.touches[0]:e).clientX);},{passive:true});});
+['mouseup','touchend'].forEach(function(ev){window.addEventListener(ev,function(){drag=false;});});
+ba.addEventListener('mousemove',function(e){if(!drag&&window.innerWidth>900)setBA(e.clientX);});
+var bio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;bio.unobserve(e.target);
+  if(reduce)return;var t0=null;
+  function a(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1),e2=1-Math.pow(1-p,3);
+    var v=.5+.28*Math.sin(e2*Math.PI);
+    baA.style.clipPath='inset(0 0 0 '+(v*100)+'%)';baH.style.left=(v*100)+'%';
+    if(p<1)requestAnimationFrame(a);}
+  requestAnimationFrame(a);});},{threshold:.4});
+if(ba)bio.observe(ba);
+
+/* faq */
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){
+  var i=q.parentElement,a=i.querySelector('.faq-a'),open=i.classList.contains('on');
+  document.querySelectorAll('.faq-i').forEach(function(x){x.classList.remove('on');x.querySelector('.faq-a').style.maxHeight=null;});
+  if(!open){i.classList.add('on');a.style.maxHeight=a.scrollHeight+'px';}});});
+
+/* calculator */
+var sqm=document.getElementById('sqm'),tN=1;
+function calc(){var s=+sqm.value;document.getElementById('sqmV').textContent=s.toLocaleString('ro-RO');
+  var cap=300*tN,d=Math.max(1,Math.ceil(s/cap));
+  document.getElementById('days').textContent=d;
+  document.getElementById('daysLbl').textContent=d===1?'zi de lucru':'zile de lucru';
+  document.getElementById('capacity').textContent=cap.toLocaleString('ro-RO');
+  document.getElementById('tcount').textContent=tN;document.getElementById('workers').textContent=tN*5;}
+sqm.addEventListener('input',calc);
+document.querySelectorAll('.team-b').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('.team-b').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');tN=+b.dataset.t;calc();});});
+calc();
+
+document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('ok').classList.add('on');});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){
+  var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();
+  window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:reduce?'auto':'smooth'});});});
+
+/* magnetic buttons + spotlight */
+if(!reduce && window.matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();
+      b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.12)+'px,'+((e.clientY-r.top-r.height/2)*.2)+'px)';});
+    b.addEventListener('mouseleave',function(){b.style.transform='';});
+  });
+  document.querySelectorAll('.op,.adv-i').forEach(function(c){
+    c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();
+      c.style.backgroundImage='radial-gradient(320px circle at '+(e.clientX-r.left)+'px '+(e.clientY-r.top)+'px,rgba(214,255,61,.07),transparent 65%)';});
+    c.addEventListener('mouseleave',function(){c.style.backgroundImage='';});
+  });
+}
+})();
+</script>
+</body>
+</html>

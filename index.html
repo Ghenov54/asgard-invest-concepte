@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asgard Invest — 3 concepte de landing page</title>
+<meta name="description" content="Trei variante de design pentru landing page-ul Asgard Invest — tencuială mecanizată.">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+:root{--bg:#0E0E0D;--card:#161615;--ink:#F4F3EF;--mut:#8E8B84;--line:rgba(244,243,239,.12);--acc:#FFCB05;
+  --ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.06;font-weight:600}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+.lbl{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--acc)}
+header{padding:70px 0 44px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(30px,5vw,52px);margin-top:18px}
+header p{margin-top:20px;color:var(--mut);max-width:62ch}
+.note{margin-top:26px;border-left:2px solid var(--acc);padding:12px 18px;background:rgba(255,203,5,.06);font-size:14.5px;color:#D8D4CB;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:48px 0 70px}
+.v{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.v:hover{border-color:var(--acc);transform:translateY(-5px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.thumb{position:relative;aspect-ratio:16/11;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
+.thumb iframe{position:absolute;top:0;left:0;width:1440px;height:990px;border:0;transform:scale(.3);transform-origin:top left;pointer-events:none}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45))}
+.v-b{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.v-n{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.v h3{font-size:22px;margin-top:10px}
+.v p{margin-top:12px;font-size:14.5px;color:var(--mut);flex:1}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.chip{font-size:11px;letter-spacing:.06em;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:#C5C1B9}
+.sw{display:flex;gap:6px;margin-top:18px}
+.sw i{width:26px;height:26px;border-radius:6px;display:block;border:1px solid rgba(255,255,255,.14)}
+.btns{display:flex;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--acc);color:#0E0E0D;padding:12px 20px;border-radius:8px;
+  font-size:14px;font-weight:700;transition:.3s var(--ease)}
+.btn:hover{filter:brightness(1.1);gap:13px}
+.btn-o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-o:hover{box-shadow:inset 0 0 0 1px var(--acc);color:var(--acc)}
+.info{border-top:1px solid var(--line);padding:52px 0 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.info h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin:0 0 14px;font-weight:700}
+.info li{list-style:none;margin-bottom:9px;color:var(--mut);font-size:14.5px;padding-left:16px;position:relative}
+.info li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--acc)}
+.info ul{margin:0;padding:0}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);font-size:12.5px}
+@media(max-width:980px){.grid{grid-template-columns:1fr;gap:26px}.info{grid-template-columns:1fr}
+  .thumb iframe{width:1280px;height:880px;transform:scale(.52)}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="lbl">Asgard Invest · Tencuială mecanizată</span>
+    <h1>Trei concepte de landing page</h1>
+    <p>Același conținut, aceeași structură și aceleași funcționalități — trei direcții vizuale diferite. Alege una, iar de acolo mergem mai departe cu implementarea în React + panou de administrare.</p>
+    <div class="note"><b>De reținut:</b> imaginile sunt generate temporar (texturi și schițe) și vor fi înlocuite cu fotografiile reale de pe șantierele Asgard Invest. Telefonul și emailul sunt date de test.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+
+    <article class="v">
+      <div class="thumb"><iframe src="v1/index.html" title="Varianta 1" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      <div class="v-b">
+        <span class="v-n">Varianta 01</span>
+        <h3>Șantier Galben</h3>
+        <p>Luminos și direct, cu galben de siguranță și tipografie masivă. Se citește ușor, inspiră accesibilitate și „meseriaș de încredere”. Cea mai prietenoasă cu clientul rezidențial.</p>
+        <div class="sw"><i style="background:#F6F3EC"></i><i style="background:#FFCB05"></i><i style="background:#131211"></i><i style="background:#E2DDD2"></i></div>
+        <div class="chips"><span class="chip">Crem + galben</span><span class="chip">Archivo Black</span><span class="chip">Editorial</span><span class="chip">Carduri rotunjite</span></div>
+        <div class="btns"><a class="btn" href="v1/index.html">Deschide →</a></div>
+      </div>
+    </article>
+
+    <article class="v">
+      <div class="thumb"><iframe src="v2/index.html" title="Varianta 2" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      <div class="v-b">
+        <span class="v-n">Varianta 02</span>
+        <h3>Industrial Neon</h3>
+        <p>Închis, tehnic, cu accente acid-lime și elemente de tip panou de control. Transmite putere industrială și capacitate — potrivit pentru clienți de blocuri, hale și volume mari.</p>
+        <div class="sw"><i style="background:#0A0B09"></i><i style="background:#D6FF3D"></i><i style="background:#141613"></i><i style="background:#8B9082"></i></div>
+        <div class="chips"><span class="chip">Dark + lime</span><span class="chip">Archivo lat</span><span class="chip">HUD tehnic</span><span class="chip">Muchii drepte</span></div>
+        <div class="btns"><a class="btn" href="v2/index.html">Deschide →</a></div>
+      </div>
+    </article>
+
+    <article class="v">
+      <div class="thumb"><iframe src="v3/index.html" title="Varianta 3" loading="lazy" scrolling="no" tabindex="-1"></iframe></div>
+      <div class="v-b">
+        <span class="v-n">Varianta 03</span>
+        <h3>Arhitectural</h3>
+        <p>Minimal și premium, cu alternanță întuneric/lumină și accente de nisip. Cea mai „scumpă” vizual — potrivită dacă țintim dezvoltatori, arhitecți și proiecte de prestigiu.</p>
+        <div class="sw"><i style="background:#0C0C0B"></i><i style="background:#BFA07A"></i><i style="background:#F4F3EF"></i><i style="background:#8E8B84"></i></div>
+        <div class="chips"><span class="chip">Dark + nisip</span><span class="chip">Manrope</span><span class="chip">Minimal</span><span class="chip">Bandă orizontală</span></div>
+        <div class="btns"><a class="btn" href="v3/index.html">Deschide →</a></div>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="info">
+    <div>
+      <h4>Ce e identic în toate trei</h4>
+      <ul>
+        <li>Hero cu mesaj și cifre-cheie</li>
+        <li>Despre companie</li>
+        <li>Servicii (6 poziții)</li>
+        <li>Opt avantaje</li>
+        <li>Proces în 6 pași</li>
+        <li>Comparator „înainte / după”</li>
+        <li>Calculator de termen (m² → zile)</li>
+        <li>Acoperire Moldova + Europa</li>
+        <li>Întrebări frecvente</li>
+        <li>Formular de ofertă + footer</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tehnic</h4>
+      <ul>
+        <li>Fonturi găzduite local (fără Google Fonts CDN)</li>
+        <li>Iconițe SVG desenate special pentru domeniu</li>
+        <li>Zero imagini externe — totul se încarcă de pe server</li>
+        <li>Animații la scroll, contoare, parallax</li>
+        <li>Responsive: 375 / 768 / 1024 / 1440 px</li>
+        <li>Respectă „prefers-reduced-motion”</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Pasul următor, după alegere</h4>
+      <ul>
+        <li>Rescriere în React + Vite + Tailwind</li>
+        <li>Panou /admin pentru texte, poze și contacte</li>
+        <li>Fotografii reale de pe șantiere</li>
+        <li>Versiuni RO / RU (la cerere)</li>
+        <li>SEO + Google Business Profile</li>
+        <li>Deploy pe Cloudflare Pages + domeniu .md</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">© 2026 Asgard Invest — machete de prezentare. Conținutul textual provine de la client.</div></footer>
+</body>
+</html>
