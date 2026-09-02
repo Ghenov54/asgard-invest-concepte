@@ -103,7 +103,12 @@ main,header,footer{position:relative;z-index:2}
 .btn-gh{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line-2)}
 .btn-gh:hover{color:var(--lime);box-shadow:inset 0 0 0 1.5px var(--lime),0 0 22px rgba(214,255,61,.16)}
 .btn-lg{padding:17px 30px;font-size:14px}
-.burger{display:none;width:44px;height:44px;background:transparent;border:1px solid var(--line-2);align-items:center;justify-content:center;cursor:pointer}
+.nav-call{display:none;flex:none;width:44px;height:44px;background:var(--lime);
+  align-items:center;justify-content:center;transition:box-shadow .3s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%)}
+.nav-call svg{width:19px;height:19px;color:#0A0B09}
+.nav-call:hover{box-shadow:0 0 24px rgba(214,255,61,.5)}
+.burger{display:none;flex:none;width:44px;height:44px;background:transparent;border:1px solid var(--line-2);align-items:center;justify-content:center;cursor:pointer}
 .burger span{display:block;width:18px;height:1.5px;background:var(--lime);position:relative;transition:.3s}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--lime);transition:.3s}
 .burger span::before{top:-6px}.burger span::after{top:6px}
@@ -112,8 +117,14 @@ main,header,footer{position:relative;z-index:2}
 .nav.open .burger span::after{top:0;transform:rotate(-45deg)}
 .mob{display:none;position:fixed;inset:0;z-index:99;background:var(--bg);padding:110px 26px 40px;flex-direction:column;gap:0}
 .mob.on{display:flex}
-.mob a{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(26px,8vw,40px);text-transform:uppercase;padding:16px 0;border-bottom:1px solid var(--line-2)}
+.mob a{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118,'wght' 800;font-size:clamp(24px,7.4vw,38px);text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--line-2)}
 .mob a:hover{color:var(--lime)}
+.mob-foot{margin-top:auto;padding-top:24px;display:grid;gap:4px}
+.mob .mob-foot a{font-family:'Inter',sans-serif;font-variation-settings:normal;font-size:16px;font-weight:600;
+  text-transform:none;border-bottom:none;padding:13px 0;display:flex;align-items:center;gap:12px}
+.mob .mob-foot .btn{justify-content:center;font-size:14px;padding:18px 24px;margin-bottom:10px;
+  font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.mob-foot .mob-c svg{width:19px;height:19px;color:var(--lime);flex:none}
 
 /* ---------- hero ---------- */
 .hero{padding:132px 0 0;overflow:hidden}
@@ -207,10 +218,10 @@ h2.h2{font-size:clamp(30px,4.8vw,60px)}
 .pstep.on .bar{width:100%}
 
 /* ---------- before/after ---------- */
-.ba-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background:#000;cursor:ew-resize;user-select:none;border:1px solid var(--line-2)}
+.ba-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background:#000;cursor:ew-resize;user-select:none;touch-action:pan-y;border:1px solid var(--line-2)}
 .ba-layer{position:absolute;inset:0}
 .ba-after{clip-path:inset(0 0 0 50%)}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--lime);z-index:5;transform:translateX(-50%);box-shadow:0 0 24px rgba(214,255,61,.7)}
+.ba-handle{touch-action:none;position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--lime);z-index:5;transform:translateX(-50%);box-shadow:0 0 24px rgba(214,255,61,.7)}
 .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:var(--lime);display:flex;align-items:center;justify-content:center;
   clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 40px rgba(214,255,61,.5)}
 .ba-knob svg{width:24px;height:24px;color:#0A0B09}
@@ -320,6 +331,48 @@ footer a:hover{color:var(--lime)}
   .ba-wrap{aspect-ratio:4/3}
   .calc-out{padding:28px 20px}
 }
+
+/* ---------- rafinare mobila (override-uri la FINAL) ---------- */
+@media(max-width:900px){
+  .nav-in{padding:12px 16px;gap:10px}
+  .brand{flex:none;white-space:nowrap}
+  .brand small{display:none}
+  .nav-in .btn{display:none}
+  .nav-call{display:inline-flex;margin-left:auto}
+  .hero{padding-top:100px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .mono{font-size:12px;letter-spacing:.13em}
+  .hud-l{font-size:12px;letter-spacing:.1em;padding:6px 10px}
+  .hero-num{font-size:64px;right:14px}
+  .hs{padding:20px 16px}
+  .hs b{font-size:30px;white-space:nowrap}
+  .ba-tag{font-size:12px;letter-spacing:.08em;padding:7px 11px}
+  .adv-i .n,.op .mono{font-size:12px}
+  .teams{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  .team-b{width:100%}
+  .rng{height:40px;background:transparent}
+  .rng::-webkit-slider-runnable-track{height:2px;background:var(--line-2)}
+  .rng::-webkit-slider-thumb{margin-top:-10px}
+  .rng::-moz-range-track{height:2px;background:var(--line-2)}
+  .calc-note{font-size:13px}
+  .cont-l a,.cont-l div{padding:18px}
+  .brand{padding:7px 0;min-height:44px}
+  .calc-row label{font-size:12px;letter-spacing:.14em}
+  .cont-l span{font-size:12px}
+  .form .btn{padding:18px 24px}
+  footer li{margin-bottom:0}
+  footer li a{display:inline-block;padding:11px 0}
+  footer h4{font-size:11.5px}
+  .f-bot{font-size:12px;letter-spacing:.1em}
+  .track{margin:0 -26px;padding:0 26px 12px}
+}
+@media(max-width:400px){
+  .nav-in{padding:12px;gap:8px}
+  .brand svg{width:30px;height:30px}
+  .hs{padding:18px 12px}
+  .hs b{font-size:26px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .rv{opacity:1;transform:none}.cut::before{display:none}.mask-w>span{transform:none}
@@ -379,12 +432,18 @@ footer a:hover{color:var(--lime)}
       <a href="#rezultat">Rezultat</a><a href="#calcul">Calculator</a>
     </nav>
     <a href="#contact" class="btn">Cere ofertă <svg><use href="#i-arrow"/></svg></a>
+    <a href="tel:+37360000000" class="nav-call" aria-label="Sună acum"><svg><use href="#i-phone"/></svg></a>
     <button class="burger" id="burger" aria-label="Meniu"><span></span></button>
   </div>
 </header>
 <div class="mob" id="mob">
   <a href="#operatiuni">Operațiuni</a><a href="#dece">De ce noi</a><a href="#proces">Proces</a>
   <a href="#rezultat">Rezultat</a><a href="#calcul">Calculator</a><a href="#contact">Contact</a>
+  <div class="mob-foot">
+    <a href="#contact" class="btn btn-lg">Cere ofertă <svg><use href="#i-arrow"/></svg></a>
+    <a href="tel:+37360000000" class="mob-c"><svg><use href="#i-phone"/></svg> +373 60 000 000</a>
+    <a href="mailto:contact@asgardinvest.md" class="mob-c"><svg><use href="#i-mail"/></svg> contact@asgardinvest.md</a>
+  </div>
 </div>
 
 <main id="top">

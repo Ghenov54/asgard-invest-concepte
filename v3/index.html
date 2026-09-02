@@ -96,7 +96,12 @@ section{position:relative}
 .btn-o{background:transparent;color:inherit;box-shadow:inset 0 0 0 1px currentColor}
 .btn-o:hover{background:var(--sand);color:#0C0C0B;box-shadow:inset 0 0 0 1px var(--sand)}
 .btn-lg{padding:18px 32px;font-size:14.5px}
-.burger{display:none;width:42px;height:42px;background:transparent;border:1px solid var(--brd-d);border-radius:2px;align-items:center;justify-content:center;cursor:pointer}
+.nav-call{display:none;flex:none;width:44px;height:44px;border:1px solid var(--brd-d);border-radius:2px;
+  align-items:center;justify-content:center;transition:.35s var(--ease)}
+.nav-call svg{width:19px;height:19px;color:var(--sand)}
+.nav-call:hover{background:var(--sand);border-color:var(--sand)}
+.nav-call:hover svg{color:#0C0C0B}
+.burger{display:none;flex:none;width:44px;height:44px;background:transparent;border:1px solid var(--brd-d);border-radius:2px;align-items:center;justify-content:center;cursor:pointer}
 .burger span{display:block;width:17px;height:1px;background:var(--paper);position:relative;transition:.3s}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:17px;height:1px;background:var(--paper);transition:.3s}
 .burger span::before{top:-5px}.burger span::after{top:5px}
@@ -105,8 +110,13 @@ section{position:relative}
 .nav.open .burger span::after{top:0;transform:rotate(-45deg)}
 .mob{display:none;position:fixed;inset:0;z-index:99;background:var(--d);padding:120px 32px 40px;flex-direction:column}
 .mob.on{display:flex}
-.mob a{font-size:clamp(26px,7.5vw,40px);font-weight:500;letter-spacing:-.03em;padding:18px 0;border-bottom:1px solid var(--brd-d)}
+.mob a{font-size:clamp(24px,7vw,38px);font-weight:500;letter-spacing:-.03em;padding:16px 0;border-bottom:1px solid var(--brd-d)}
 .mob a:hover{color:var(--sand)}
+.mob-foot{margin-top:auto;padding-top:24px;display:grid;gap:4px}
+.mob .mob-foot a{font-size:16px;font-weight:500;letter-spacing:0;border-bottom:none;
+  padding:13px 0;display:flex;align-items:center;gap:12px}
+.mob .mob-foot .btn{justify-content:center;font-size:15px;padding:18px 24px;margin-bottom:10px;font-weight:600}
+.mob-foot .mob-c svg{width:19px;height:19px;color:var(--sand);flex:none}
 
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 0 0;position:relative;overflow:hidden}
@@ -184,10 +194,10 @@ h2.h2 b{font-weight:700}
 .pr p{margin-top:9px;font-size:14.6px;color:var(--mut-d);line-height:1.6}
 
 /* before/after */
-.ba-wrap{position:relative;overflow:hidden;aspect-ratio:16/8;background:#111;cursor:ew-resize;user-select:none}
+.ba-wrap{position:relative;overflow:hidden;aspect-ratio:16/8;background:#111;cursor:ew-resize;user-select:none;touch-action:pan-y}
 .ba-layer{position:absolute;inset:0}
 .ba-after{clip-path:inset(0 0 0 50%)}
-.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--paper);z-index:5;transform:translateX(-50%)}
+.ba-handle{touch-action:none;position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--paper);z-index:5;transform:translateX(-50%)}
 .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;
   background:rgba(246,245,242,.1);backdrop-filter:blur(10px);border:1px solid rgba(246,245,242,.6);
   display:flex;align-items:center;justify-content:center}
@@ -305,6 +315,47 @@ footer a:hover{color:var(--paper)}
   .ba-wrap{aspect-ratio:4/3}
   .calc-out{padding:34px 22px}
 }
+
+/* ---------- rafinare mobila (override-uri la FINAL) ---------- */
+@media(max-width:900px){
+  .nav{padding:14px 0}
+  .nav.stuck{padding:10px 0}
+  .nav-in{gap:10px}
+  .brand{flex:none;white-space:nowrap}
+  .brand small{display:none}
+  .nav-in .btn{display:none}
+  .nav-call{display:inline-flex;margin-left:auto}
+  .hero{padding-top:110px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  .lbl{font-size:12px;letter-spacing:.2em}
+  .hm{padding:20px 16px 4px}
+  .hm b{font-size:30px;white-space:nowrap}
+  .hm>span{font-size:13px;line-height:1.4}
+  .ba-tag{font-size:12px;letter-spacing:.12em}
+  .srv-c .n{font-size:12px}
+  .rng{height:40px;background:transparent}
+  .rng::-webkit-slider-runnable-track{height:1px;background:var(--brd-d)}
+  .rng::-webkit-slider-thumb{margin-top:-9.5px}
+  .rng::-moz-range-track{height:1px;background:var(--brd-d)}
+  .teams{width:100%;display:grid;grid-template-columns:repeat(5,1fr)}
+  .team-b{width:100%;height:54px}
+  .calc-out{padding:38px 24px}
+  .cl-r{padding:20px 0}
+  .brand{padding:8px 0;min-height:44px}
+  .cl-r span{font-size:12px}
+  .form .btn{width:100%;justify-content:center;padding:18px 24px}
+  footer li{margin-bottom:0}
+  footer li a{display:inline-block;padding:11px 0}
+  footer h4{font-size:12px}
+  .f-bot{font-size:12.5px}
+  .sbtn{width:48px;height:48px}
+}
+@media(max-width:400px){
+  .nav-in{gap:8px}
+  .brand svg{width:26px;height:26px}
+  .brand b{font-size:15px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .rv{opacity:1;transform:none}.curtain::after{display:none}.curtain>*{transform:none}
@@ -364,12 +415,18 @@ footer a:hover{color:var(--paper)}
       <a href="#rezultat">Rezultat</a><a href="#calcul">Estimare</a>
     </nav>
     <a href="#contact" class="btn">Cere ofertă <svg><use href="#i-arrow"/></svg></a>
+    <a href="tel:+37360000000" class="nav-call" aria-label="Sună acum"><svg><use href="#i-phone"/></svg></a>
     <button class="burger" id="burger" aria-label="Meniu"><span></span></button>
   </div>
 </header>
 <div class="mob" id="mob">
   <a href="#despre">Despre</a><a href="#servicii">Servicii</a><a href="#proces">Proces</a>
   <a href="#rezultat">Rezultat</a><a href="#calcul">Estimare</a><a href="#contact">Contact</a>
+  <div class="mob-foot">
+    <a href="#contact" class="btn btn-lg">Cere o ofertă <svg><use href="#i-arrow"/></svg></a>
+    <a href="tel:+37360000000" class="mob-c"><svg><use href="#i-phone"/></svg> +373 60 000 000</a>
+    <a href="mailto:contact@asgardinvest.md" class="mob-c"><svg><use href="#i-mail"/></svg> contact@asgardinvest.md</a>
+  </div>
 </div>
 
 <main id="top">
