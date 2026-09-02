@@ -27,6 +27,7 @@ header p{margin-top:20px;color:var(--mut);max-width:62ch}
 .v:hover{border-color:var(--acc);transform:translateY(-5px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
 .thumb{position:relative;aspect-ratio:16/11;overflow:hidden;background:#000;border-bottom:1px solid var(--line)}
 .thumb iframe{position:absolute;top:0;left:0;width:1440px;height:990px;border:0;transform:scale(.3);transform-origin:top left;pointer-events:none}
+.thumb.ready iframe{transition:none}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45))}
 .v-b{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
 .v-n{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
@@ -48,8 +49,8 @@ header p{margin-top:20px;color:var(--mut);max-width:62ch}
 .info li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--acc)}
 .info ul{margin:0;padding:0}
 footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);font-size:12.5px}
-@media(max-width:980px){.grid{grid-template-columns:1fr;gap:26px}.info{grid-template-columns:1fr}
-  .thumb iframe{width:1280px;height:880px;transform:scale(.52)}}
+@media(max-width:980px){.grid{grid-template-columns:1fr;gap:26px}.info{grid-template-columns:1fr}}
+@media(max-width:700px){.thumb{aspect-ratio:10/13}}
 @media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important}}
 </style>
 </head>
@@ -146,5 +147,26 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--mut);fon
 </div>
 
 <footer><div class="wrap">© 2026 Asgard Invest — machete de prezentare. Conținutul textual provine de la client.</div></footer>
+<script>
+(function(){
+  // scaleaza fiecare previzualizare la latimea reala a cardului,
+  // ca pe telefon sa se vada chiar varianta mobila, nu un decupaj din desktop
+  function fit(){
+    var mob = window.matchMedia('(max-width:700px)').matches;
+    var W = mob ? 390 : 1440;
+    document.querySelectorAll('.thumb').forEach(function(t){
+      var f = t.querySelector('iframe'); if(!f) return;
+      var s = t.clientWidth / W;
+      f.style.width  = W + 'px';
+      f.style.height = Math.round(t.clientHeight / s) + 'px';
+      f.style.transform = 'scale(' + s + ')';
+      t.classList.add('ready');
+    });
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+})();
+</script>
 </body>
 </html>
